@@ -21,7 +21,8 @@ const onClickImage = (id: any) => {
         <v-col cols="12" lg="3" sm="6" v-for="card in items" :key="card.key">
             <v-card elevation="10" class="withbg tw-cursor-pointer" rounded="md">
                 <div class="tw-py-5">
-                <v-img  :src="apiUrl + card.img?.url" height="150" class="rounded-t-md" @click="onClickImage(card.id)"></v-img>
+                    <v-img :src="apiUrl + card.img?.url" height="150" class="rounded-t-md"
+                        @click="onClickImage(card.id)"></v-img>
                 </div>
                 <v-card-item class=" d-flex tw-min-h-[140px]">
                     <h6 class="text-h6 tw-mb-2" v-text="card.title"></h6>

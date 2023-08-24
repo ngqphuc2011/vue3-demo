@@ -67,17 +67,17 @@ const chartOptions = computed(() => {
             tooltip: { theme: "light" },
 
             responsive: [
-            {
-                breakpoint: 600,
-                options: {
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 3,
-                        }
-                    },
+                {
+                    breakpoint: 600,
+                    options: {
+                        plotOptions: {
+                            bar: {
+                                borderRadius: 3,
+                            }
+                        },
+                    }
                 }
-            }
-        ]
+            ]
 
         },
     };
@@ -89,8 +89,7 @@ const chartOptions = computed(() => {
             <div class="d-sm-flex align-center justify-space-between pt-sm-2">
                 <div><v-card-title class="text-h5">Sales Overview</v-card-title></div>
                 <div class="my-sm-0 my-2">
-                    <v-select v-model="select" :items="items" variant="outlined" density="compact"
-                        hide-details></v-select>
+                    <v-select v-model="select" :items="items" variant="outlined" density="compact" hide-details></v-select>
                 </div>
             </div>
             <div class="mt-6">

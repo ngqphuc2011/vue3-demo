@@ -51,7 +51,7 @@ const sDrawer = ref(true);
             </div>
             <div>
                 <!-- Upgrade button -->
-                <v-btn class="mr-2 bg-primary" href="http://facebook.com" target="_blank">Contact</v-btn>
+                <v-btn class="mr-2 bg-primary" href="https://coinranking.com/exchanges" target="_blank">Contact</v-btn>
                 <!-- User Profile -->
                 <ProfileDD />
             </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductCards from '@/components/dashboard/ProductCards.vue';
+import ProductCards from '@/components/dashboard/NewsCard.vue';
 
 </script>
 <template>

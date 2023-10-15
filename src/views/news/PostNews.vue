@@ -10,7 +10,7 @@ const title = ref<string>('');
 const summary = ref<string>('');
 const content = ref<string>('');
 const image = ref<Array<File>>([]);
-const imageUrl = ref<string>('');
+const imageUrl = ref<string | ArrayBuffer | null>('');
 const isImageChanged = ref<boolean>(false);
 
 const onFileChange = (e: any) => {
@@ -26,7 +26,9 @@ const onFileClear = () => {
 const createImage = (file: any) => {
     const reader = new FileReader()
     reader.onload = (e) => {
-        imageUrl.value = e.target.result
+        if (e.target) {
+            imageUrl.value = e.target.result;
+        }
     }
     reader.readAsDataURL(file)
 }

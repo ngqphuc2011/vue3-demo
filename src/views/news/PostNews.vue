@@ -97,8 +97,9 @@ if (!!itemId) {
         summary.value = data.summary;
         content.value = data.content;
         if (data.img) {
-            imageUrl.value = apiUrl + data.img.url;
-            fetch(imageUrl.value)
+            const imgUrl = apiUrl + data.img.url;
+            imageUrl.value = imgUrl;
+            fetch(imgUrl)
                 .then(res => res.blob())
                 .then(blob => {
                     const file = new File([blob], 'image.jpg', { type: blob.type });

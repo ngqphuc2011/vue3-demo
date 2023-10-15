@@ -1,4 +1,4 @@
-import { LayoutDashboardIcon, TypographyIcon } from 'vue-tabler-icons';
+import { UploadIcon, HomeIcon, NewsIcon } from 'vue-tabler-icons';
 
 export interface menu {
     header?: string;
@@ -19,14 +19,19 @@ const sidebarItem: menu[] = [
     { header: 'Dashboard' },
     {
         title: 'Home',
-        icon: LayoutDashboardIcon,
+        icon: HomeIcon,
         to: '/'
     },
     {
         title: 'News',
-        icon: TypographyIcon,
+        icon: NewsIcon,
         to: '/news'
-    }
+    },
+    {
+        title: 'Post',
+        icon: UploadIcon,
+        to: '/post'
+    },
 ];
 
 export default sidebarItem;

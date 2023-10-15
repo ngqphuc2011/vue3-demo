@@ -20,7 +20,12 @@ const MainRoutes = {
             name: 'NewsDetail',
             path: '/news/:id',
             component: () => import('@/views/news/NewsDetail.vue')
-        }
+        },
+        {
+            name: 'Post',
+            path: '/post',
+            component: () => import('@/views/news/PostNews.vue')
+        },
     ]
 };
 

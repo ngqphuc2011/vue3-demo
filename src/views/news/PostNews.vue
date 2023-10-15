@@ -128,10 +128,16 @@ if (!!itemId) {
                 @click:clear="onFileClear"></v-file-input>
         </v-col>
         <v-col cols="6">
-            <v-img :src="imageUrl" :height="200" />
+            <v-img class="preview-image rounded border-grey" :src="imageUrl" :height="200" />
         </v-col>
         <v-col cols="12">
             <v-btn color="primary" size="large" block flat @click="onClickPostButton">Post</v-btn>
         </v-col>
     </v-row>
 </template>
+
+<style scoped>
+.preview-image {
+    border: #BDBDBD 1px solid;
+}
+</style>

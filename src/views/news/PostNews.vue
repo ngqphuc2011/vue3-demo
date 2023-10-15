@@ -73,9 +73,18 @@ const postNews = (data: any) => {
         body: formData,
     };
     fetch(newsUrl, newsOptions).then(() => {
-        router.push({
-            name: 'News',
-        })
+        if (!!itemId) {
+            router.push({
+                name: 'NewsDetail',
+                params: {
+                    id: itemId,
+                }
+            })
+        } else {
+            router.push({
+                name: 'News',
+            })
+        }
     }).catch((e) => { })
 }
 

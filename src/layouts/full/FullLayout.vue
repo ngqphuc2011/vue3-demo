@@ -3,6 +3,8 @@ import { RouterView } from 'vue-router';
 // import VerticalSidebarVue from './vertical-sidebar/VerticalSidebar.vue';
 // import VerticalHeaderVue from './vertical-header/VerticalHeader.vue';
 import MainView from './Main.vue';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 </script>
 
 <template>
@@ -14,7 +16,7 @@ import MainView from './Main.vue';
             <v-main>
                 <v-container fluid class="page-wrapper">
                     <div class="maxWidth">
-                        <RouterView />
+                        <RouterView :key="route.path" />
                     </div>
                 </v-container>
             </v-main>

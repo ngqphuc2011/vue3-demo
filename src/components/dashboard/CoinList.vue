@@ -8,7 +8,7 @@ const headers = [
     { title: 'Recommended', key: 'recommended', width: '10%' },
 ]
 const items = ref([]);
-fetch(apiUrl + '/api/exchanges?populate=*').then(response => response.json()).then(res => {
+fetch(apiUrl + '/api/exchanges?populate=*&pagination[pageSize]=100').then(response => response.json()).then(res => {
     items.value = res.data;
 })
 const onClickTableRow = (e: Event, { item }: any) => {

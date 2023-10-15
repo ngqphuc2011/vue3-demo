@@ -12,6 +12,7 @@ const content = ref<string>('');
 const image = ref<Array<File>>([]);
 const imageUrl = ref<string | ArrayBuffer | null>('');
 const isImageChanged = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
 
 const onFileChange = (e: any) => {
     imageUrl.value = '';
@@ -36,6 +37,7 @@ const onClickPostButton = () => {
     if (!title.value || !summary.value || !content.value || !image.value.length) {
         return
     }
+    isLoading.value = true;
     const formData = new FormData()
     formData.append('files', image.value[0])
     const options = {
@@ -53,6 +55,7 @@ const onClickPostButton = () => {
             }
             postNews(data);
         }).catch((e) => {
+            isLoading.value = false;
         })
     } else {
         const data = {
@@ -75,6 +78,7 @@ const postNews = (data: any) => {
         body: formData,
     };
     fetch(newsUrl, newsOptions).then(() => {
+        isLoading.value = false;
         if (!!itemId) {
             router.push({
                 name: 'NewsDetail',
@@ -87,7 +91,9 @@ const postNews = (data: any) => {
                 name: 'News',
             })
         }
-    }).catch((e) => { })
+    }).catch((e) => {
+        isLoading.value = false;
+    })
 }
 
 if (!!itemId) {
@@ -138,7 +144,7 @@ if (!!itemId) {
             </v-img>
         </v-col>
         <v-col cols="12">
-            <v-btn color="primary" size="large" block flat @click="onClickPostButton">Post</v-btn>
+            <v-btn :loading="isLoading" color="primary" size="large" block flat @click="onClickPostButton">Post</v-btn>
         </v-col>
     </v-row>
 </template>

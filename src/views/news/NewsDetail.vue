@@ -2,18 +2,14 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import UiParentCard from '@/components/shared/UiParentCard.vue';
-import MarkdownIt from 'markdown-it'
 import { router } from '@/router';
 const apiUrl = import.meta.env.VITE_API_URL
 const route = useRoute()
-const md = new MarkdownIt();
 
-
-const item = ref({}) as any
+const item = ref<any>({})
 const itemId = route.params.id
 fetch(apiUrl + '/api/news/' + itemId + '?populate=*').then(response => response.json()).then(res => {
-    const content = md.render(res.data.content);
-    item.value = { ...res.data, content };
+    item.value = res.data;
 })
 const onClickDeleteButton = () => {
     fetch(apiUrl + '/api/news/' + itemId, {
@@ -22,6 +18,14 @@ const onClickDeleteButton = () => {
         router.push({
             name: 'News',
         })
+    }).catch((e) => {})
+}
+const onClickEditButton = () => {
+    router.push({
+        name: 'PostEdit',
+        params: {
+            id: itemId,
+        }
     })
 }
 </script>
@@ -35,7 +39,10 @@ const onClickDeleteButton = () => {
                     <p v-html="item.content" class="text-body-1 mb-6 tw-whitespace-pre-line" />
                     <div class="tw-flex tw-justify-between">
                         <RouterLink :to="{ name: 'News' }" class="tw-underline tw-cursor-pointer">Back to list</RouterLink>
-                        <span class="tw-underline tw-cursor-pointer" @click="onClickDeleteButton">Delete</span>
+                        <div>
+                            <span class="tw-underline tw-cursor-pointer mr-2" @click="onClickDeleteButton">Delete</span>
+                            <span class="tw-underline tw-cursor-pointer" @click="onClickEditButton">Edit</span>
+                        </div>
                     </div>
                 </div>
             </UiParentCard>

@@ -26,6 +26,11 @@ const MainRoutes = {
             path: '/post',
             component: () => import('@/views/news/PostNews.vue')
         },
+        {
+            name: 'PostEdit',
+            path: '/post/:id',
+            component: () => import('@/views/news/PostNews.vue')
+        },
     ]
 };
 

@@ -130,12 +130,7 @@ if (!!itemId) {
             <v-label class="font-weight-bold mb-1">Content</v-label>
             <v-textarea v-model="content" variant="outlined" hide-details color="primary"></v-textarea>
         </v-col>
-        <v-col cols="6">
-            <v-label class="font-weight-bold mb-1">Image</v-label>
-            <v-file-input v-model="image" accept="image/png, image/jpeg, image/bmp" placeholder="Pick an image"
-                prepend-icon="" append-inner-icon="mdi-camera" variant="outlined" @change="onFileChange"
-                @click:clear="onFileClear"></v-file-input>
-        </v-col>
+       
         <v-col cols="6">
             <v-img class="preview-image rounded border-grey" :src="imageUrl" :height="200">
                 <template v-slot:placeholder>
@@ -143,7 +138,11 @@ if (!!itemId) {
                 </template>
             </v-img>
         </v-col>
-        <v-col cols="12">
+        <v-col cols="6">
+            <v-label class="font-weight-bold mb-1">Image</v-label>
+            <v-file-input v-model="image" accept="image/png, image/jpeg, image/bmp" placeholder="Pick an image"
+                prepend-icon="" append-inner-icon="mdi-camera" variant="outlined" @change="onFileChange"
+                @click:clear="onFileClear"></v-file-input>
             <v-btn :loading="isLoading" color="primary" size="large" block flat @click="onClickPostButton">Post</v-btn>
         </v-col>
     </v-row>
